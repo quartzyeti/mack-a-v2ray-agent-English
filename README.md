@@ -6,9 +6,9 @@ It's not done, but it works... i think.
 
 What I do is install the ORIGINAL mack-a's v2ray-agent from the link:
 
-'''
+```
 wget -P /root -N --no-check-certificate "https://raw.githubusercontent.com/mack-a/v2ray-agent/master/install.sh" && chmod 700 /root/install.sh && /root/install.sh
-'''
+```
 
 then, after the install of the original, replace the file with the "install_en.sh" file in the "shell" folder here. Renaming it to "install.sh" is important too...
 
