@@ -4,6 +4,19 @@ All I'm trying to do is update the "install_en.sh" file in the "shell" folder.
 It's not done, but it works... i think.
 
 
+What I do is install the ORIGINAL mack-a's v2ray-agent from the link:
+
+'''
+wget -P /root -N --no-check-certificate "https://raw.githubusercontent.com/mack-a/v2ray-agent/master/install.sh" && chmod 700 /root/install.sh && /root/install.sh
+'''
+
+then, after the install of the original, replace the file with the "install_en.sh" file in the "shell" folder here. Renaming it to "install.sh" is important too...
+
+by default the install.sh file after installation is located at /etc/v2ray-agent/install.sh
+
+If, from the main "vasma" menu, you choose option 17 (update), it will reinstall the ORIGINAL mack-a script.
+
+
 # Xray-core/sing-box one-click script quick installation
 
 - [Thanks to JetBrains for providing non-commercial open source software development license](https://www.jetbrains.com/?from=v2ray-agent)
