@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# inspection area
+# Inspection area
 # -------------------------------------------------------------
 # Inspection system
 export LANG=en_US.UTF-8
