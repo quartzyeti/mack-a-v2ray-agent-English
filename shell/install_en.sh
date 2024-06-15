@@ -7713,15 +7713,15 @@ customSingBoxInstall() {
 customXrayInstall() {
     echoContent skyBlue "\n======================== Personalized Installation ============================"
     echoContent yellow "VLESS front, default installation 0, if you dont have a domain name then choose 7 to install Reality only"
-    echoContent yellow "0.VLESS+TLS_Vision+TCP [suggested]"
-    echoContent yellow "1.VLESS+TLS+WS [CDN only]"
-    echoContent yellow "2.Trojan+TLS+gRPC [CDN only]"
-    echoContent yellow "3.VMess+TLS+WS [CDN only]"
-    echoContent yellow "4.Trojan+TLS [Not recommended]"
-    echoContent yellow "5.VLESS+TLS+gRPC [CDN only]"
-    echoContent yellow "7.VLESS+Reality+uTLS+Vision [suggested]"
+    echoContent yellow "0. VLESS + TLS_Vision + TCP [-Suggested-]"
+    echoContent yellow "1. VLESS + TLS + WS [CDN only]"
+    echoContent yellow "2. Trojan + TLS + gRPC [CDN only]"
+    echoContent yellow "3. VMess + TLS + WS [CDN only]"
+    echoContent yellow "4. Trojan + TLS [Not recommended]"
+    echoContent yellow "5. VLESS + TLS + gRPC [CDN only]"
+    echoContent yellow "7. VLESS + Reality + uTLS + Vision [-Suggested-]"
     # echoContent yellow "8.VLESS+Reality+gRPC"
-    read -r -p "Please select [Multiple Choice], [For example:1,2,3]:" selectCustomInstallType
+    read -r -p "Please select [Multiple Choice], [For example: 1,2,3]:" selectCustomInstallType
     echoContent skyBlue "--------------------------------------------------------------"
     if echo "${selectCustomInstallType}" | grep -q "，"; then
         echoContent red " ---> Please use English commas to separate"
