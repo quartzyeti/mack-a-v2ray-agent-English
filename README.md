@@ -4,17 +4,21 @@ All I'm trying to do is update the "install_en.sh" file in the "shell" folder.
 It's not done, but it works... i think.
 
 
-What I do is install the ORIGINAL mack-a's v2ray-agent from the link:
+# get this:
 
+This is the english install. It's going to install the original, close and then reopen in english. "vasma" to open like normal after that.
 ```
-wget -P /root -N --no-check-certificate "https://raw.githubusercontent.com/mack-a/v2ray-agent/master/install.sh" && chmod 700 /root/install.sh && /root/install.sh
+wget -P /root -N --no-check-certificate "https://raw.githubusercontent.com/quartzyeti/mack-a-v2ray-agent-English/master/shell/mack-a-English_Setup.sh" && chmod 700 /root/mack-a-English_Setup.sh && /root/mack-a-English_Setup.sh
 ```
 
-then, after the install of the original, replace the file with the "install_en.sh" file in the "shell" folder here. Renaming it to "install.sh" is important too...
+# go back to mack-a original unmodified with this:
 
-by default the install.sh file after installation is located at /etc/v2ray-agent/install.sh
+If you want to go back to the way things were, you can use this and keep your data:
+```
+wget -P /etc/v2ray-agent/ -N --no-check-certificate "https://raw.githubusercontent.com/quartzyeti/mack-a-v2ray-agent-English/master/shell/mack-a-English_Removal.sh" && chmod 700 /etc/v2ray-agent/mack-a-English_Removal.sh && /etc/v2ray-agent/mack-a-English_Removal.sh
+```
 
-If, from the main "vasma" menu, you choose option 17 (update), it will reinstall the ORIGINAL mack-a script.
+After that, if you choose to return to the english version, just use the link at the top again.
 
 
 # Xray-core/sing-box one-click script quick installation
