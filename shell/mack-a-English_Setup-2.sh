@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Download the original install.sh
+# Download the Original install.sh
 wget -P /root -N --no-check-certificate "https://raw.githubusercontent.com/mack-a/v2ray-agent/master/install.sh"
 
 # Set permissions for the original install.sh
