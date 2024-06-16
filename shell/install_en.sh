@@ -2311,19 +2311,19 @@ v2rayVersionManageMenu() {
 xrayVersionManageMenu() {
     echoContent skyBlue "\nschedule  $1/${totalProgress} : Xray version management"
     if [[ "${coreInstallType}" != "1" ]]; then
-        echoContent red " ---> No installation directory detected, please execute the script installation content"
+        echoContent red " ---> No installation directory detected. Please execute the script to install the content"
         exit 0
     fi
     echoContent red "\n=============================================================="
-    echoContent yellow "1.Upgrade Xray-core"
-    echoContent yellow "2.Upgrade Xray-core preview"
-    echoContent yellow "3.Rollback Xray-core"
-    echoContent yellow "4.Close Xray-core"
-    echoContent yellow "5.Open Xray-core"
-    echoContent yellow "6.Restart Xray-core"
-    echoContent yellow "7.Update geosite"
-    echoContent yellow "8.Set up automatic geo file update [update every morning]"
-    echoContent yellow "9.View logs"
+    echoContent yellow "1. Upgrade Xray-core"
+    echoContent yellow "2. Upgrade Xray-core preview version"
+    echoContent yellow "3. Roll back Xray-core"
+    echoContent yellow "4. Stop Xray-core"
+    echoContent yellow "5. Start Xray-core"
+    echoContent yellow "6. Restart Xray-core"
+    echoContent yellow "7. Update geosite, geoip"
+    echoContent yellow "8. Set automatic update for geo files [update daily at midnight]"
+    echoContent yellow "9. View logs"
     echoContent red "=============================================================="
     read -r -p "please choose:" selectXrayType
     if [[ "${selectXrayType}" == "1" ]]; then
@@ -2333,9 +2333,9 @@ xrayVersionManageMenu() {
         prereleaseStatus=true
         updateXray
     elif [[ "${selectXrayType}" == "3" ]]; then
-        echoContent yellow "\n1.Only the last five versions can be rolled back"
-        echoContent yellow "2.There is no guarantee that it will work after the return"
-        echoContent yellow "3.If the fallback version does not support the current config, it will fail to connect, proceed with caution!"
+        echoContent yellow "\n1. You can only roll back to the last five versions"
+        echoContent yellow "2. Rolling back does not guarantee normal operation"
+        echoContent yellow "3. If the rolled-back version does not support the current config, it may fail to connect. Proceed with caution!"
         echoContent skyBlue "------------------------Version-------------------------------"
         curl -s "https://api.github.com/repos/XTLS/Xray-core/releases?per_page=5" | jq -r ".[]|select (.prerelease==false)|.tag_name" | awk '{print ""NR""":"$0}'
         echoContent skyBlue "--------------------------------------------------------------"
@@ -6026,16 +6026,16 @@ checkLog() {
     echoContent yellow "# It is recommended to turn on access logs only for debugging purposes\n"
 
     if [[ "${logStatus}" == "false" ]]; then
-        echoContent yellow "1.Open access log"
+        echoContent yellow "1. Activate access logging"
     else
-        echoContent yellow "1.Turn off the access log"
+        echoContent yellow "1. Deactivate access logging"
     fi
 
-    echoContent yellow "2.Listening to access logs"
-    echoContent yellow "3.Listening to the error log"
-    echoContent yellow "4.Viewing the Certificate Timing Task Log"
-    echoContent yellow "5.Viewing the Certificate Installation Log"
-    echoContent yellow "6.Empty the log"
+    echoContent yellow "2. Monitor the access log"
+    echoContent yellow "3. Monitor the error log"
+    echoContent yellow "4. View the certificate scheduled task log"
+    echoContent yellow "5. View the certificate installation log"
+    echoContent yellow "6. Clear the logs"
     echoContent red "=============================================================="
 
     read -r -p "Please choose:" selectAccessLogType
@@ -8817,7 +8817,7 @@ checkRealityDest() {
     local traceResult=
     traceResult=$(curl -s "https://$(echo "${realityDestDomain}" | cut -d ':' -f 1)/cdn-cgi/trace" | grep "visit_scheme=https")
     if [[ -n "${traceResult}" ]]; then
-        echoContent red "\n ---> The domain names used were detected. The hosting was in Cloudflare and opened an agent. Using this type of domain name may cause VPS traffic to be used by others [not recommended]\n"
+        echoContent red "\n ---> The domain name in use was detected. It is hosted on Cloudflare with CDN active. Using this type of domain name may cause VPS traffic to be used by others [not recommended]\n"
         read -r -p "Do you want to continue？ [y/n]" setRealityDestStatus
         if [[ "${setRealityDestStatus}" != 'y' ]]; then
             exit 0
@@ -9017,11 +9017,11 @@ installRealityScanner() {
 }
 # reality scanner
 realityScanner() {
-    echoContent skyBlue "\nprogress 1/1 : Scan Reality domain name"
+    echoContent skyBlue "\nProgress 1/1: Scanning Reality domain name"
     echoContent red "\n=============================================================="
     echoContent yellow "# Precautions"
-    echoContent yellow "After the scan is complete, please check whether the content of the scan website is compliant and need to bear the risk"
-    echoContent red "Some IDCs are not allowed to scan operations, such as moving workers, of which risks should be assumed by themselves\n"
+    echoContent yellow "After the scan is complete, please check if the scanned website content is compliant. You bear the risk."
+    echoContent red "Some IDCs do not allow scanning operations, such as Bandwagon Host. You bear the risk\n"
     echoContent yellow "1.Scan ipv4"
     echoContent yellow "2.Scan ipv6"
     echoContent red "=============================================================="
@@ -9033,7 +9033,7 @@ realityScanner() {
         type=6
     fi
 
-    read -r -p "Certain IDCs do not allow scanning operations, such as tile movers, where the risk is taken on your own, do you continue?[y/n]:" scanStatus
+    read -r -p "Certain IDCs do not allow scanning operations, such as Bandwagon Host, where the risk is your own. Do you wish to continue? [y/n]:" scanStatus
 
     if [[ "${scanStatus}" != "y" ]]; then
         exit 0
