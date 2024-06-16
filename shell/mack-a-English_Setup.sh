@@ -24,3 +24,6 @@ mv /root/install_en.sh /etc/v2ray-agent/install.sh
 
 # Set permissions for the new install.sh
 chmod 700 /etc/v2ray-agent/install.sh && /etc/v2ray-agent/install.sh
+
+# Remove the English_Setup.sh script
+rm -- "$0"
