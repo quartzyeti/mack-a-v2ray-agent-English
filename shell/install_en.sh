@@ -3269,9 +3269,9 @@ initTuicPort() {
 initTuicProtocol() {
     echoContent skyBlue "\nPlease select the type of algorithm"
     echoContent red "=============================================================="
-    echoContent yellow "1.bbr(default)"
-    echoContent yellow "2.cubic"
-    echoContent yellow "3.new_reno"
+    echoContent yellow "1. bbr(default)"
+    echoContent yellow "2. cubic"
+    echoContent yellow "3. new_reno"
     echoContent red "=============================================================="
     read -r -p "please select:" selectTuicAlgorithm
     case ${selectTuicAlgorithm} in
@@ -6550,7 +6550,7 @@ installWarpReg() {
     if [[ ! -f "/etc/v2ray-agent/warp/warp-reg" ]]; then
         echo
         echoContent yellow "# Precautions"
-        echoContent yellow "# Relying on third -party procedures, please know the risks"
+        echoContent yellow "# Relies on third-party software. Please be aware of the risks involved."
         echoContent yellow "# Project address: https://github.com/badafans/warp-reg \n"
 
         read -r -p "warp-REG is not installed, install it ？[y/n]:" installWarpRegStatus
@@ -6667,13 +6667,13 @@ removeWireGuardRoute() {
 # Warp Diversion-Third-Party IPv4
 warpRoutingReg() {
     local type=$2
-    echoContent skyBlue "\nschedule  $1/${totalProgress} : WARP Diversion [Third Party]"
+    echoContent skyBlue "\nschedule  $1/${totalProgress} : Warp Diversion [Third Party]"
     echoContent red "=============================================================="
 
-    echoContent yellow "1.View diverted domains"
-    echoContent yellow "2.Add domain name"
-    echoContent yellow "3.Set WARP Global"
-    echoContent yellow "4.Uninstall warp diversion"
+    echoContent yellow "1. View diverted domains"
+    echoContent yellow "2. Add domain name"
+    echoContent yellow "3. Set Warp Global"
+    echoContent yellow "4. Uninstall Warp diversion"
     echoContent red "=============================================================="
     read -r -p "please choose:" warpStatus
     installWarpReg
@@ -6692,7 +6692,7 @@ warpRoutingReg() {
         exit 0
     elif [[ "${warpStatus}" == "2" ]]; then
         echoContent yellow "# Precautions"
-        echoContent yellow "# Support Sing-BOX、Xray-core"
+        echoContent yellow "# Support Sing-Box、Xray-Core"
         echoContent yellow "# Tutorial：https://www.v2ray-agent.com/archives/1683226921000 \n"
 
         read -r -p "Please enter the domain name according to the example above:" domainList
@@ -6703,9 +6703,9 @@ warpRoutingReg() {
 
         echoContent red "=============================================================="
         echoContent yellow "# Precautions\n"
-        echoContent yellow "1.Will delete all settings of diversion rules"
-        echoContent yellow "2.Will remove all outbound rules except WARP [third-party]\n"
-        read -r -p "Do you confirm the settings？ [y/n]:" warpOutStatus
+        echoContent yellow "1. This will delete all of the diversion rules and their settings"
+        echoContent yellow "2. This will remove all outbound rules except WARP [third-party]\n"
+        read -r -p "Do you wish to continue？ [y/n]:" warpOutStatus
 
         if [[ "${warpOutStatus}" == "y" ]]; then
             readConfigWarpReg
@@ -6788,11 +6788,11 @@ routingToolsMenu() {
     echoContent yellow "# Precautions"
     echoContent yellow "# The flow diversion for the server can be used to unlock the related content of ChatGPT, streaming media and other related content\n"
 
-    echoContent yellow "1.Warp diversion [third party IPv4】"
-    echoContent yellow "2.Warp diversion [third party IPv6】"
-    echoContent yellow "3.IPv6 diversion"
-    echoContent yellow "4.Socks5 diversion【Replacement of arbitrary door shunts】"
-    echoContent yellow "5.DNS diversion"
+    echoContent yellow "1. Warp diversion [third party IPv4】"
+    echoContent yellow "2. Warp diversion [third party IPv6】"
+    echoContent yellow "3. IPv6 diversion"
+    echoContent yellow "4. Socks5 diversion【Replacement of DokodemoDoor diversion】"
+    echoContent yellow "5. DNS diversion"
     #    echoContent yellow "6.VMESS+WS+TLS Diversion"
     echoContent yellow "7.SNI reverse proxy diversion"
 
@@ -6835,10 +6835,10 @@ vmessWSRouting() {
     echoContent skyBlue "\N function 1/${totalProgress} : VMess+WS+TLS diversion"
     echoContent red "\n=============================================================="
     echoContent yellow "# precaution"
-    echoContent yellow "# Tutorials：https://www.v2ray-agent.com/archives/1683226921000 \n"
+    echoContent yellow "# Tutorials： https://www.v2ray-agent.com/archives/1683226921000 \n"
 
-    echoContent yellow "1.Add Outbound"
-    echoContent yellow "2.Uninstallation"
+    echoContent yellow "1. Add Outbound"
+    echoContent yellow "2. Uninstallation"
     read -r -p "Please choose:" selectType
 
     case ${selectType} in
@@ -6864,9 +6864,9 @@ socks5Routing() {
     echoContent yellow "# Use only for traffic forwarding between different machines in a network environment where access will not be blocked, do not use for proxy access."
     echoContent yellow "# Tutorials： https://www.v2ray-agent.com/archives/1683226921000#heading-5 \n"
 
-    echoContent yellow "1.Socks5 outbound"
-    echoContent yellow "2.Socks5 Inbound"
-    echoContent yellow "3.uninstallation"
+    echoContent yellow "1. Socks5 outbound"
+    echoContent yellow "2. Socks5 Inbound"
+    echoContent yellow "3. Uninstallation"
     read -r -p "please select:" selectType
 
     case ${selectType} in
@@ -6887,10 +6887,10 @@ socks5InboundRoutingMenu() {
     echoContent skyBlue "\N function 1/1 : Socks5inbound"
     echoContent red "\n=============================================================="
 
-    echoContent yellow "1.Install Socks5 Inbound"
-    echoContent yellow "2.View Diversion Rules"
-    echoContent yellow "3.Add diversion rules"
-    echoContent yellow "4.View Inbound Configuration"
+    echoContent yellow "1. Install Socks5 Inbound"
+    echoContent yellow "2. View Diversion Rules"
+    echoContent yellow "3. Add diversion rules"
+    echoContent yellow "4. View Inbound Configuration"
     read -r -p "please select:" selectType
     case ${selectType} in
     1)
@@ -6931,10 +6931,10 @@ socks5OutboundRoutingMenu() {
     echoContent skyBlue "\N function 1/1 : Socks5 outbound"
     echoContent red "\n=============================================================="
 
-    echoContent yellow "1.Install Socks5 Outbound"
-    echoContent yellow "2.Set up Socks5 global forwarding"
-    echoContent yellow "3.View diversion rules"
-    echoContent yellow "4.Add diversion rules"
+    echoContent yellow "1. Install Socks5 Outbound"
+    echoContent yellow "2. Set up Socks5 global forwarding"
+    echoContent yellow "3. View diversion rules"
+    echoContent yellow "4. Add diversion rules"
     read -r -p "please select:" selectType
     case ${selectType} in
     1)
@@ -6968,8 +6968,8 @@ setSocks5OutboundRoutingAll() {
 
     echoContent red "=============================================================="
     echoContent yellow "# Precautions\n"
-    echoContent yellow "1.Will delete all the diversion rules that have been set, including other diversion (warp, IPv6, etc.)"
-    echoContent yellow "2.Will delete all outlet rules other than SOCKS5\n"
+    echoContent yellow "1. Will delete all the diversion rules that have been set, including other diversion (warp, IPv6, etc.)"
+    echoContent yellow "2. Will delete all outlet rules other than SOCKS5\n"
     read -r -p "Do you confirm the settings？ [y/n]:" socksOutStatus
 
     if [[ "${socksOutStatus}" == "y" ]]; then
@@ -7039,9 +7039,9 @@ removeSocks5Routing() {
     echoContent skyBlue "\N function 1/1 : uninstallSocks5 diversion "
     echoContent red "\n=============================================================="
 
-    echoContent yellow "1.uninstall Socks5 Outbound"
-    echoContent yellow "2.Uninstall Socks5 Inbound"
-    echoContent yellow "3.Uninstall All"
+    echoContent yellow "1. Uninstall Socks5 Outbound"
+    echoContent yellow "2. Uninstall Socks5 Inbound"
+    echoContent yellow "3. Uninstall All"
     read -r -p "please choose:" unInstallSocks5RoutingStatus
     if [[ "${unInstallSocks5RoutingStatus}" == "1" ]]; then
         if [[ "${coreInstallType}" == "1" ]]; then
@@ -7088,12 +7088,12 @@ removeSocks5Routing() {
 # Socks5 Inbound
 setSocks5Inbound() {
 
-    echoContent yellow "\n==================== Configure Socks5 inbound (unlocker, lander) =====================\n"
+    echoContent yellow "\n==================== Configure Inbound Socks5 (Unblocking, Landing) =====================\n"
     echoContent skyBlue "\nStart configuring the Socks5 protocol inbound port"
     echo
     mapfile -t result < <(initSingBoxPort "${singBoxSocks5Port}")
-    echoContent green "\n ---> SOCKS5 port in the station：${result[-1]}"
-    echoContent green "\n ---> This port needs to be configured to other machine Leave the station, please do not perform proxy behaviors"
+    echoContent green "\n ---> Inbound Socks5 port：${result[-1]}"
+    echoContent green "\n ---> This port needs to be configured for outbound traffic to other machines. Please do not use it for proxy purposes."
 
     echoContent yellow "\nPlease enter the custom UUID [Need to be legal], [Enter] Random UUID"
     read -r -p 'UUID:' socks5RoutingUUID
@@ -7110,8 +7110,8 @@ setSocks5Inbound() {
 
     echoContent yellow "\nPlease select the type of DNS resolution for the diverted domain name"
     echoContent yellow "# Note: You need to ensure that the vps supports the appropriate DNS resolution"
-    echoContent yellow "1.IPv4 [Enter Default]"
-    echoContent yellow "2.IPv6"
+    echoContent yellow "1. IPv4 [Enter Default]"
+    echoContent yellow "2. IPv6"
 
     read -r -p 'IP type:' socks5InboundDomainStrategyStatus
     local domainStrategy=
@@ -7438,8 +7438,8 @@ sniRouting() {
     echoContent yellow "# Precaution"
     echoContent yellow "# Tutorials：https://www.v2ray-agent.com/archives/1683226921000 \n"
 
-    echoContent yellow "1.添加"
-    echoContent yellow "2.卸载"
+    echoContent yellow "1. Add"
+    echoContent yellow "2. Uninstall"
     read -r -p "Please select:" selectType
 
     case ${selectType} in
@@ -7591,9 +7591,9 @@ setUnlockDNS() {
 
         reloadCore
 
-        echoContent yellow "\n ---> If you still can't watch it you can try the following two options"
-        echoContent yellow " 1.Reboot vps"
-        echoContent yellow " 2.After uninstalling the dns unlock, change the local [/etc/resolv.conf] DNS settings and reboot the vps\n"
+        echoContent yellow "\n ---> If you're still unable to access the content, please try the following:"
+        echoContent yellow " 1. Reboot your VPS"
+        echoContent yellow " 2. After uninstalling the dns tool, change the local [/etc/resolv.conf] DNS settings and reboot the VPS\n"
     else
         echoContent red " ---> dns cannot be empty"
     fi
@@ -7656,15 +7656,15 @@ EOF
 # sing-box Personalized Installation
 customSingBoxInstall() {
     echoContent skyBlue "\n======================== Personalized Installation ============================"
-    echoContent yellow "0.VLESS+Vision+TCP"
-    echoContent yellow "1.VLESS+TLS+WS[CDN recommendation only]"
-    echoContent yellow "3.VMess+TLS+WS[CDN recommendation only]"
-    echoContent yellow "4.Trojan+TLS[Not recommended]"
-    echoContent yellow "6.Hysteria2"
-    echoContent yellow "7.VLESS+Reality+Vision"
-    echoContent yellow "8.VLESS+Reality+gRPC"
-    echoContent yellow "9.Tuic"
-    echoContent yellow "10.Naive"
+    echoContent yellow "0. VLESS + Vision + TCP"
+    echoContent yellow "1. VLESS + TLS + WS [CDN only]"
+    echoContent yellow "3. VMess + TLS + WS [CDN only]"
+    echoContent yellow "4. Trojan + TLS [Not recommended]"
+    echoContent yellow "6. Hysteria2"
+    echoContent yellow "7. VLESS + Reality + Vision"
+    echoContent yellow "8. VLESS + Reality + gRPC"
+    echoContent yellow "9. Tuic"
+    echoContent yellow "10. Naive"
 
     read -r -p "Please select [multiple choice], [e.g.:1,2,3]:" selectCustomInstallType
     echoContent skyBlue "--------------------------------------------------------------"
@@ -7673,7 +7673,7 @@ customSingBoxInstall() {
         exit 0
     fi
     if [[ "${selectCustomInstallType}" != "10" ]] && ((${#selectCustomInstallType} >= 2)) && ! echo "${selectCustomInstallType}" | grep -q ","; then
-        echoContent red " ---> 多选Please use English commas to separate"
+        echoContent red " ---> Multiple choice. Please use English commas to separate"
         exit 0
     fi
     if [[ "${selectCustomInstallType: -1}" != "," ]]; then
@@ -7831,13 +7831,13 @@ selectCoreInstall() {
         fi
         ;;
     *)
-        echoContent red ' ---> 选择错误，重新选择'
+        echoContent red ' ---> Incorrect selection, re-select'
         selectCoreInstall
         ;;
     esac
 }
 
-# xray-core 安装
+# xray-core install
 xrayCoreInstall() {
     unInstallSubscribe
     checkBTPanel
@@ -7846,11 +7846,11 @@ xrayCoreInstall() {
     totalProgress=12
     installTools 2
     if [[ -n "${btDomain}" ]]; then
-        echoContent skyBlue "\nschedule  3/${totalProgress} : 检测到宝塔面板/1Panel，跳过申请TLS步骤"
+        echoContent skyBlue "\nschedule  3/${totalProgress} : Pagoda Panel/1Panel detected, skip applying TLS step"
         handleXray stop
         customPortFunction
     else
-        # 申请tls
+        # Apply for tls
         initTLSNginxConfig 3
         handleXray stop
         installTLS 4
@@ -7866,7 +7866,7 @@ xrayCoreInstall() {
     cleanUp singBoxDel
     installCronTLS 9
     if [[ -n "${btDomain}" ]]; then
-        echoContent skyBlue "\nschedule  11/${totalProgress} : 检测到宝塔面板/1Panel，跳过伪装网站"
+        echoContent skyBlue "\nschedule  11/${totalProgress} : Pagoda Panel/1Panel detected, skipping the fake site"
     else
         nginxBlog 10
     fi
@@ -7989,8 +7989,8 @@ coreVersionManageMenu() {
     fi
     echoContent skyBlue "\N function 1/1 : Please select the core"
     echoContent red "\n=============================================================="
-    echoContent yellow "1.Xray-core"
-    echoContent yellow "2.sing-box"
+    echoContent yellow "1. = = Xray-Core = ="
+    echoContent yellow "2. = = Sing-Box = ="
     echoContent red "=============================================================="
     read -r -p "please enter:" selectCore
 
@@ -8148,7 +8148,7 @@ unInstallSubscribe() {
 
 # Add subscription
 addSubscribeMenu() {
-    echoContent skyBlue "\n===================== 添加其他机器订阅 ======================="
+    echoContent skyBlue "\n===================== Add other machine subscription ======================="
     echoContent yellow "1.Add to"
     echoContent yellow "2.Remove"
     echoContent red "=============================================================="
@@ -8638,10 +8638,10 @@ subscribe() {
                         currentDomain="${currentHost}:${subscribePort}"
                     fi
                 fi
-                echoContent skyBlue "\n----------默认订阅----------\n"
+                echoContent skyBlue "\n----------Default subscription----------\n"
                 echoContent green "email:${email}\n"
                 echoContent yellow "url:${subscribeType}://${currentDomain}/s/default/${emailMd5}\n"
-                echoContent yellow "在线二维码:https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=${subscribeType}://${currentDomain}/s/default/${emailMd5}\n"
+                echoContent yellow "Online QR Code: https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=${subscribeType}://${currentDomain}/s/default/${emailMd5}\n"
                 if [[ "${release}" != "alpine" ]]; then
                     echo "${subscribeType}://${currentDomain}/s/default/${emailMd5}" | qrencode -s 10 -m 1 -t UTF8
                 fi
@@ -8655,9 +8655,9 @@ subscribe() {
 
                     local clashProxyUrl="${subscribeType}://${currentDomain}/s/clashMeta/${emailMd5}"
                     clashMetaConfig "${clashProxyUrl}" "${emailMd5}"
-                    echoContent skyBlue "\n----------clashMeta订阅----------\n"
+                    echoContent skyBlue "\n----------clashMeta subscription----------\n"
                     echoContent yellow "url:${subscribeType}://${currentDomain}/s/clashMetaProfiles/${emailMd5}\n"
-                    echoContent yellow "在线二维码:https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=${subscribeType}://${currentDomain}/s/clashMetaProfiles/${emailMd5}\n"
+                    echoContent yellow "Online QR Code: https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=${subscribeType}://${currentDomain}/s/clashMetaProfiles/${emailMd5}\n"
                     if [[ "${release}" != "alpine" ]]; then
                         echo "${subscribeType}://${currentDomain}/s/clashMetaProfiles/${emailMd5}" | qrencode -s 10 -m 1 -t UTF8
                     fi
@@ -8667,7 +8667,7 @@ subscribe() {
                 if [[ -f "/etc/v2ray-agent/subscribe_local/sing-box/${email}" ]]; then
                     cp "/etc/v2ray-agent/subscribe_local/sing-box/${email}" "/etc/v2ray-agent/subscribe/sing-box_profiles/${emailMd5}"
 
-                    echoContent skyBlue " ---> 下载 sing-box 通用配置文件"
+                    echoContent skyBlue " ---> Download sing-box generic profile"
                     if [[ "${release}" == "alpine" ]]; then
                         wget -O "/etc/v2ray-agent/subscribe/sing-box/${emailMd5}" -q "https://raw.githubusercontent.com/mack-a/v2ray-agent/master/documents/sing-box.json"
                     else
@@ -8677,9 +8677,9 @@ subscribe() {
                     jq ".outbounds=$(jq ".outbounds|map(if has(\"outbounds\") then .outbounds += $(jq ".|map(.tag)" "/etc/v2ray-agent/subscribe_local/sing-box/${email}") else . end)" "/etc/v2ray-agent/subscribe/sing-box/${emailMd5}")" "/etc/v2ray-agent/subscribe/sing-box/${emailMd5}" >"/etc/v2ray-agent/subscribe/sing-box/${emailMd5}_tmp" && mv "/etc/v2ray-agent/subscribe/sing-box/${emailMd5}_tmp" "/etc/v2ray-agent/subscribe/sing-box/${emailMd5}"
                     jq ".outbounds += $(jq '.' "/etc/v2ray-agent/subscribe_local/sing-box/${email}")" "/etc/v2ray-agent/subscribe/sing-box/${emailMd5}" >"/etc/v2ray-agent/subscribe/sing-box/${emailMd5}_tmp" && mv "/etc/v2ray-agent/subscribe/sing-box/${emailMd5}_tmp" "/etc/v2ray-agent/subscribe/sing-box/${emailMd5}"
 
-                    echoContent skyBlue "\n----------sing-box订阅----------\n"
+                    echoContent skyBlue "\n----------sing-box subscription----------\n"
                     echoContent yellow "url:${subscribeType}://${currentDomain}/s/sing-box/${emailMd5}\n"
-                    echoContent yellow "在线二维码:https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=${subscribeType}://${currentDomain}/s/sing-box/${emailMd5}\n"
+                    echoContent yellow "Online QR Code: https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=${subscribeType}://${currentDomain}/s/sing-box/${emailMd5}\n"
                     if [[ "${release}" != "alpine" ]]; then
                         echo "${subscribeType}://${currentDomain}/s/sing-box/${emailMd5}" | qrencode -s 10 -m 1 -t UTF8
                     fi
@@ -8690,11 +8690,11 @@ subscribe() {
             done
         fi
     else
-        echoContent red " ---> 未安装伪装站点，无法使用订阅服务"
+        echoContent red " ---> Cannot use subscription services without installing a Fake Site"
     fi
 }
 
-# 更新远程订阅
+# Updating Remote Subscriptions
 updateRemoteSubscribe() {
 
     local emailMD5=$1
@@ -8711,9 +8711,9 @@ updateRemoteSubscribe() {
 
         if ! echo "${clashMetaProxies}" | grep -q "nginx" && [[ -n "${clashMetaProxies}" ]]; then
             echo "${clashMetaProxies}" >>"/etc/v2ray-agent/subscribe/clashMeta/${emailMD5}"
-            echoContent green " ---> clashMeta订阅 ${remoteUrl}:${email} 更新成功"
+            echoContent green " ---> clashMeta subscription ${remoteUrl}:${email} Updated successfully!"
         else
-            echoContent red " ---> clashMeta订阅 ${remoteUrl}:${email}不存在"
+            echoContent red " ---> clashMeta subscription ${remoteUrl}:${email} does not exist"
         fi
 
         local default=
@@ -8723,9 +8723,9 @@ updateRemoteSubscribe() {
             default=$(echo "${default}" | base64 -d | sed "s/#${email}/#${email}_${serverAlias}/g")
             echo "${default}" >>"/etc/v2ray-agent/subscribe/default/${emailMD5}"
 
-            echoContent green " ---> 通用订阅 ${remoteUrl}:${email} 更新成功"
+            echoContent green " ---> Generic Subscription ${remoteUrl}:${email} Updated successfully!"
         else
-            echoContent red " ---> 通用订阅 ${remoteUrl}:${email} 不存在"
+            echoContent red " ---> Generic subscription ${remoteUrl}:${email} does not exist"
         fi
 
         local singBoxSubscribe=
@@ -8736,9 +8736,9 @@ updateRemoteSubscribe() {
             singBoxSubscribe=$(jq ". +=${singBoxSubscribe}" "/etc/v2ray-agent/subscribe_local/sing-box/${email}")
             echo "${singBoxSubscribe}" | jq . >"/etc/v2ray-agent/subscribe_local/sing-box/${email}"
 
-            echoContent green " ---> 通用订阅 ${remoteUrl}:${email} 更新成功"
+            echoContent green " ---> Generic Subscription ${remoteUrl}:${email} Updated successfully!"
         else
-            echoContent red " ---> 通用订阅 ${remoteUrl}:${email} 不存在"
+            echoContent red " ---> Generic subscription ${remoteUrl}:${email} does not exist"
         fi
 
     done < <(grep -v '^$' <"/etc/v2ray-agent/subscribe_remote/remoteSubscribeUrl")
@@ -8933,13 +8933,13 @@ initXrayRealityPort() {
         initXrayRealityPort
     else
         allowPort "${realityPort}"
-        echoContent yellow "\n ---> 端口: ${realityPort}"
+        echoContent yellow "\n ---> port: ${realityPort}"
     fi
 
 }
 # Initialize Reality configuration
 initXrayRealityConfig() {
-    echoContent skyBlue "\nprogress  $1/${totalProgress} : 初始化 Xray-core reality配置"
+    echoContent skyBlue "\nprogress  $1/${totalProgress} : Initialize Xray-core reality configuration"
     initXrayRealityPort
     initRealityKey
     initRealityClientServersName
@@ -8955,7 +8955,7 @@ updateXrayRealityConfig() {
     realityVisionResult=$(echo "${realityVisionResult}" | jq -r ".inbounds[0].streamSettings.realitySettings.publicKey = \"${realityPublicKey}\"")
     echo "${realityVisionResult}" | jq . >${configPath}07_VLESS_vision_reality_inbounds.json
     reloadCore
-    echoContent green " ---> 修改完成"
+    echoContent green " ---> Modification completed"
 }
 # xray-core Reality Install
 xrayCoreRealityInstall() {
