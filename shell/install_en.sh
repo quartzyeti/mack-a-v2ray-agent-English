@@ -7811,8 +7811,8 @@ customXrayInstall() {
 selectCoreInstall() {
     echoContent skyBlue "\N function 1/${totalProgress} : Choose the core installation"
     echoContent red "\n=============================================================="
-    echoContent yellow "1.Xray-core"
-    echoContent yellow "2.sing-box"
+    echoContent yellow "1. = = Xray-Core = ="
+    echoContent yellow "2. = = Sing-Box = ="
     echoContent red "=============================================================="
     read -r -p "please choose:" selectCoreType
     case ${selectCoreType} in
