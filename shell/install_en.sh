@@ -862,16 +862,16 @@ showInstallStatus() {
     if [[ -n "${coreInstallType}" ]]; then
         if [[ "${coreInstallType}" == 1 ]]; then
             if [[ -n $(pgrep -f "xray/xray") ]]; then
-                echoContent yellow "\n Core: xray-core [n]]"
+                echoContent yellow "\n Core: Xray-core [n]]"
             else
-                echoContent yellow "\N core: Xray-core[Not running]"
+                echoContent yellow "\N core: Xray-core [Not running]"
             fi
 
         elif [[ "${coreInstallType}" == 2 ]]; then
             if [[ -n $(pgrep -f "sing-box/sing-box") ]]; then
-                echoContent yellow "\N core: sing-box[In operation]"
+                echoContent yellow "\N core: sing-box [In operation]"
             else
-                echoContent yellow "\N core: sing-box[Not running]"
+                echoContent yellow "\N core: sing-box [Not running]"
             fi
         fi
         # Read the protocol type
@@ -1126,9 +1126,9 @@ installTools() {
                 echoContent red "  acme installation failed--->"
                 tail -n 100 /etc/v2ray-agent/tls/acme.log
                 echoContent yellow "error detection:"
-                echoContent red "  1.Failed to get the Github file, please wait for Github to recover and try, the recovery progress can be seen [https://www.githubstatus.com/]"
-                echoContent red "  2.acme.sh script is buggy and can be viewed[https://github.com/acmesh-official/acme.sh] issues"
-                echoContent red "  3.If pure IPv6 machine, please set NAT64, you can execute the following command, if add the following command is still not available, please try to replace other NAT64"
+                echoContent red "  1. Failed to get the Github file, please wait for Github to recover and try, the recovery progress can be seen [https://www.githubstatus.com/]"
+                echoContent red "  2. acme.sh script is buggy and can be viewed[https://github.com/acmesh-official/acme.sh] issues"
+                echoContent red "  3. If pure IPv6 machine, please set NAT64, you can execute the following command, if add the following command is still not available, please try to replace other NAT64"
                 #                echoContent skyBlue "  echo -e \"nameserver 2001:67c:2b0::4\\\nnameserver 2a00:1098:2c::1\" >> /etc/resolv.conf"
                 echoContent skyBlue "  sed -i \"1i\\\nameserver 2001:67c:2b0::4\\\nnameserver 2a00:1098:2c::1\" /etc/resolv.conf"
                 exit 0
@@ -1526,10 +1526,10 @@ checkIP() {
     if [[ -z ${localIP} ]] || ! echo "${localIP}" | sed '1{s/[^(]*(//;s/).*//;q}' | grep -q '\.' && ! echo "${localIP}" | sed '1{s/[^(]*(//;s/).*//;q}' | grep -q ':'; then
         echoContent red "\n ---> No ip detected for current domain"
         echoContent skyBlue " ---> Please perform the following checks in order"
-        echoContent yellow " --->  1.Check that the domain name is written correctly"
-        echoContent yellow " --->  2.Check if the domain dns resolution is correct"
-        echoContent yellow " --->  3.If the resolution is correct, please wait for the dns to take effect, it is expected to take effect within three minutes."
-        echoContent yellow " --->  4.If you report Nginx startup problems, please start nginx manually to check the error, if you can't handle it by yourself please mention the issues"
+        echoContent yellow " --->  1. Check that the domain name is written correctly"
+        echoContent yellow " --->  2. Check if the domain dns resolution is correct"
+        echoContent yellow " --->  3. If the resolution is correct, please wait for the dns to take effect, it is expected to take effect within three minutes."
+        echoContent yellow " --->  4. If you report Nginx startup problems, please start nginx manually to check the error, if you can't handle it by yourself please mention the issues"
         echo
         echoContent skyBlue " ---> If all the above settings are correct, please try again after reinstalling the pure system"
 
@@ -1566,7 +1566,7 @@ customSSLEmail() {
                 echo "ACCOUNT_EMAIL='${sslEmail}'" >>/root/.acme.sh/account.conf
                 echoContent green " ---> end of addition"
             else
-                echoContent yellow "Please re-enter the correct mailbox format [Example: username@example.com]"
+                echoContent yellow "Please re-enter the correct email format [Example: username@example.com]"
                 customSSLEmail
             fi
         fi
@@ -1578,10 +1578,10 @@ switchDNSAPI() {
     read -r -p "Do you want to use DNS API to request certificates [NAT support]？[y/n]:" dnsAPIStatus
     if [[ "${dnsAPIStatus}" == "y" ]]; then
         echoContent red "\n=============================================================="
-        echoContent yellow "1.cloudflare[default]"
-        echoContent yellow "2.aliyun"
+        echoContent yellow "1. cloudflare [default]"
+        echoContent yellow "2. aliyun"
         echoContent red "=============================================================="
-        read -r -p "please choose[Enter] Use the default:" selectDNSAPIType
+        read -r -p "Please choose [Enter: Use the default]:" selectDNSAPIType
         case ${selectDNSAPIType} in
         1)
             dnsAPIType="cloudflare"
@@ -1639,11 +1639,11 @@ initDNSAPIConfig() {
 switchSSLType() {
     if [[ -z "${sslType}" ]]; then
         echoContent red "\n=============================================================="
-        echoContent yellow "1.letsencrypt[Default]"
-        echoContent yellow "2.zerossl"
-        echoContent yellow "3.buypass[DNS application not supported]"
+        echoContent yellow "1. letsencrypt[Default]"
+        echoContent yellow "2. zerossl"
+        echoContent yellow "3. buypass[DNS application not supported]"
         echoContent red "=============================================================="
-        read -r -p "please choose[Enter] Use the default:" selectSSLType
+        read -r -p "Please choose [Enter: Use the default]:" selectSSLType
         case ${selectSSLType} in
         1)
             sslType="letsencrypt"
@@ -1893,17 +1893,17 @@ randomNum() {
         echo $((RANDOM % $2 + $1))
     fi
 }
-# NginxCamouflage blog
+# NginxMasquerade blog
 nginxBlog() {
     if [[ -n "$1" ]]; then
-        echoContent skyBlue "\nschedule $1/${totalProgress} : Add camouflage site"
+        echoContent skyBlue "\nschedule $1/${totalProgress} : Add Masquerade site"
     else
-        echoContent yellow "\nStarting to add a masquerade site"
+        echoContent yellow "\nStarting to add a Masquerade site"
     fi
 
     if [[ -d "${nginxStaticPath}" && -f "${nginxStaticPath}/check" ]]; then
         echo
-        read -r -p "Camouflage installation detected, need to reinstall[y/n]:" nginxBlogInstallStatus
+        read -r -p "Masquerade website installation detected, need to reinstall[y/n]:" nginxBlogInstallStatus
         if [[ "${nginxBlogInstallStatus}" == "y" ]]; then
             rm -rf "${nginxStaticPath}*"
             #  randomNum=$((RANDOM % 6 + 1))
@@ -1916,7 +1916,7 @@ nginxBlog() {
 
             unzip -o "${nginxStaticPath}html${randomNum}.zip" -d "${nginxStaticPath}" >/dev/null
             rm -f "${nginxStaticPath}html${randomNum}.zip*"
-            echoContent green " ---> Adding the camouflage site was successful"
+            echoContent green " ---> Adding the Masquerade site was successful"
         fi
     else
         randomNum=$(randomNum 1 9)
@@ -1931,7 +1931,7 @@ nginxBlog() {
 
         unzip -o "${nginxStaticPath}html${randomNum}.zip" -d "${nginxStaticPath}" >/dev/null
         rm -f "${nginxStaticPath}html${randomNum}.zip*"
-        echoContent green " ---> Adding the camouflage site was successful"
+        echoContent green " ---> Adding the Masquerade site was successful"
     fi
 
 }
@@ -5325,14 +5325,14 @@ addNginx302() {
     done
 }
 
-# Updating masquerade sites
+# Updating Masquerade websites
 updateNginxBlog() {
     if [[ "${coreInstallType}" == "2" ]]; then
         echoContent red "\n ---> This feature only supports Xray-core kernel."
         exit 0
     fi
 
-    echoContent skyBlue "\nschedule $1/${totalProgress} : Replacement of masquerade site"
+    echoContent skyBlue "\nschedule $1/${totalProgress} : Replacement of Masquerade Website"
 
     if ! echo "${currentInstallProtocolType}" | grep -q ",0," || [[ -z "${coreInstallType}" ]]; then
         echoContent red "\n ---> Please install Xray-core's VLESS_TCP_TLS_Vision first due to environment dependencies."
@@ -5340,16 +5340,16 @@ updateNginxBlog() {
     fi
     echoContent red "=============================================================="
     echoContent yellow "# For customization, please manually copy the template file to the ${nginxStaticPath} \n"
-    echoContent yellow "1.Newbie guide"
-    echoContent yellow "2.Gaming Site"
-    echoContent yellow "3.Personal Blog 01"
-    echoContent yellow "4.corporate website"
-    echoContent yellow "5.Unlock encrypted music file template [https://github.com/ix64/unlock-music]"
-    echoContent yellow "6.mikutap [https://github.com/HFIProgramming/mikutap]"
-    echoContent yellow "7.Enterprise Station 02"
-    echoContent yellow "8.Personal Blog 02"
-    echoContent yellow "9.404 auto redirect baidu"
-    echoContent yellow "10.302 redirect website"
+    echoContent yellow "1. Newbie guide"
+    echoContent yellow "2. Gaming Site"
+    echoContent yellow "3. Personal Blog 01"
+    echoContent yellow "4. Corporate Website"
+    echoContent yellow "5. Unlock encrypted music files template [https://github.com/ix64/unlock-music]"
+    echoContent yellow "6. Mikutap [https://github.com/HFIProgramming/mikutap]"
+    echoContent yellow "7. Enterprise Station 02"
+    echoContent yellow "8. Personal Blog 02"
+    echoContent yellow "9. 404 auto redirect baidu"
+    echoContent yellow "10. 302 redirect website"
     echoContent red "=============================================================="
     read -r -p "please choose:" selectInstallNginxBlogType
 
@@ -5359,7 +5359,7 @@ updateNginxBlog() {
             exit 0
         fi
         echoContent red "\n=============================================================="
-        echoContent yellow "Redirects have higher priority, and if you change the masquerade site after configuring 302, the masquerade site will not work under the root route"
+        echoContent yellow "Redirects have higher priority, and if you change the Masquerade site after configuring 302, the Masquerade site will not work under the root route"
         echoContent yellow "If you want to disguise the site to achieve the effect, delete 302 redirect configuration\n"
         echoContent yellow "1.Add to"
         echoContent yellow "2.Delete"
@@ -5398,7 +5398,7 @@ updateNginxBlog() {
 
         unzip -o "${nginxStaticPath}html${selectInstallNginxBlogType}.zip" -d "${nginxStaticPath}" >/dev/null
         rm -f "${nginxStaticPath}html${selectInstallNginxBlogType}.zip*"
-        echoContent green " ---> Replacement of masquerade site successful"
+        echoContent green " ---> Replacement of Masquerade website successful"
     else
         echoContent red " ---> Incorrect selection, please reselect"
         updateNginxBlog
@@ -5579,7 +5579,7 @@ unInstall() {
 
     if [[ -d "${nginxStaticPath}" && -f "${nginxStaticPath}/check" ]]; then
         rm -rf "${nginxStaticPath}*"
-        echoContent green " ---> Delete the camouflage website to complete"
+        echoContent green " ---> Delete the Masquerade website to complete"
     fi
 
     rm -rf /usr/bin/vasma
@@ -6788,10 +6788,10 @@ routingToolsMenu() {
     echoContent yellow "# Precautions"
     echoContent yellow "# The flow diversion for the server can be used to unlock the related content of ChatGPT, streaming media and other related content\n"
 
-    echoContent yellow "1. Warp diversion [third party IPv4】"
-    echoContent yellow "2. Warp diversion [third party IPv6】"
+    echoContent yellow "1. Warp diversion [third party IPv4]"
+    echoContent yellow "2. Warp diversion [third party IPv6]"
     echoContent yellow "3. IPv6 diversion"
-    echoContent yellow "4. Socks5 diversion【Replacement of DokodemoDoor diversion】"
+    echoContent yellow "4. Socks5 diversion [Replacement of DokodemoDoor diversion]"
     echoContent yellow "5. DNS diversion"
     #    echoContent yellow "6.VMESS+WS+TLS Diversion"
     echoContent yellow "7.SNI reverse proxy diversion"
@@ -7778,7 +7778,7 @@ customXrayInstall() {
             randomPathFunction 4
         fi
         if [[ -n "${btDomain}" ]]; then
-            echoContent skyBlue "\nschedule  6/${totalProgress} : Pagoda Panel/1Panel detected, skipping the fake site"
+            echoContent skyBlue "\nschedule  6/${totalProgress} : Pagoda Panel/1Panel detected, skipping the Masquerade site"
         else
             nginxBlog 6
         fi
@@ -7866,7 +7866,7 @@ xrayCoreInstall() {
     cleanUp singBoxDel
     installCronTLS 9
     if [[ -n "${btDomain}" ]]; then
-        echoContent skyBlue "\nschedule  11/${totalProgress} : Pagoda Panel/1Panel detected, skipping the fake site"
+        echoContent skyBlue "\nschedule  11/${totalProgress} : Pagoda Panel/1Panel detected, skipping the Masquerade site"
     else
         nginxBlog 10
     fi
@@ -8070,7 +8070,7 @@ installSubscribe() {
 
         mapfile -t result < <(initSingBoxPort "${subscribePort}")
         echo
-        echoContent yellow " ---> Start configuring subscribed masquerade sites\n"
+        echoContent yellow " ---> Start configuring subscribed Masquerade site\n"
         nginxBlog
         echo
         local httpSubscribeStatus=
@@ -8690,7 +8690,7 @@ subscribe() {
             done
         fi
     else
-        echoContent red " ---> Cannot use subscription services without installing a Fake Site"
+        echoContent red " ---> Cannot use subscription services without installing a Masquerade Site"
     fi
 }
 
@@ -9228,14 +9228,14 @@ menu() {
 
     echoContent skyBlue "-------------------------Tool Management-----------------------------"
     echoContent yellow "7. User Management & Client Configurations"
-    echoContent yellow "8. Fake Site Management"
+    echoContent yellow "8. Masquerade Site Management"
     echoContent yellow "9. SSL Certificate Management"
     echoContent yellow "10. CDN Node Management"
     echoContent yellow "11. Diversion Tool"
     echoContent yellow "12. Add New Port"
     echoContent yellow "13. BT Download Management"
     echoContent yellow "15. Domain Name Blacklist"  echoContent skyBlue "-------------------------Version Management-----------------------------"
-    echoContent yellow "16. Core Version & Logging"
+    echoContent yellow "16. Core Version ~ Logging ~ geosite/geoip"
     echoContent yellow "17. Update Script"
     echoContent yellow "18. Install BBR, DD script"
     echoContent skyBlue "-------------------------Script Management-----------------------------"
