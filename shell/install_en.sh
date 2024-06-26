@@ -9212,7 +9212,7 @@ menu() {
     cd "$HOME" || exit
     echoContent red "\n=============================================================="
     echoContent green "author:mack-a [Quartzyeti's bad translation]"
-    echoContent green "Current version: v3.3.4 [translation beta v.01]"
+    echoContent green "Current version: v3.3.4 [translation beta v.02]"
     echoContent green "Github：https://github.com/mack-a/v2ray-agent"
     echoContent green "Description: 8-in-1 Coexistence Script\c"
     showInstallStatus
