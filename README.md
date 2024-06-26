@@ -1,5 +1,5 @@
 
-# English updated to v3.3.3
+# English updated to v3.3.4
 All I'm trying to do is update the "install_en.sh" file in the "shell" folder.
 It's not done, but it works... i think.
 
