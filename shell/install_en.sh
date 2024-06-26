@@ -3385,7 +3385,14 @@ addSingBoxRouteRule() {
     local domainList=$2
     # Routing File Name
     local routingName=$3
-
+    # Retrieve the contents of the last installation
+    if [[ -f "${singBoxConfigPath}${routingName}.json" ]]; then
+        read -r -p "Would you like to use the last used configuration? ？[y/n]:" historyRouteStatus
+        if [[ "${historyRouteStatus}" == "y" ]]; then
+            domainList="${domainList},$(jq -rc .route.rules[0].rule_set[] "${singBoxConfigPath}${routingName}.json" | awk -F "[_]" '{print $1}' | paste -sd ',')"
+            domainList="${domainList},$(jq -rc .route.rules[0].domain_regex[] "${singBoxConfigPath}${routingName}.json" | awk -F "[*]" '{print $2}' | paste -sd ',' | sed 's/\\//g')"
+        fi
+    fi
     local rules=
     rules=$(initSingBoxRules "${domainList}" "${routingName}")
     # Domain exact match rules
@@ -7158,7 +7165,7 @@ initSingBoxRules() {
         else
             domainRules=$(echo "${domainRules}" | jq -r ". += [\"^([a-zA-Z0-9_-]+\\\.)*${line//./\\\\.}\"]")
         fi
-    done < <(echo "$1" | tr ',' '\n')
+    done < <(echo "$1" | tr ',' '\n' | grep -v '^$' | sort -n | uniq | paste -sd ',' | tr ',' '\n')
     echo "{ \"domainRules\":${domainRules},\"ruleSet\":${ruleSet}}"
 }
 
@@ -9205,7 +9212,7 @@ menu() {
     cd "$HOME" || exit
     echoContent red "\n=============================================================="
     echoContent green "author:mack-a [Quartzyeti's bad translation]"
-    echoContent green "Current version: v3.3.3 [translation beta v.01]"
+    echoContent green "Current version: v3.3.4 [translation beta v.01]"
     echoContent green "Github：https://github.com/mack-a/v2ray-agent"
     echoContent green "Description: 8-in-1 Coexistence Script\c"
     showInstallStatus
@@ -9234,7 +9241,8 @@ menu() {
     echoContent yellow "11. Diversion Tool"
     echoContent yellow "12. Add New Port"
     echoContent yellow "13. BT Download Management"
-    echoContent yellow "15. Domain Name Blacklist"  echoContent skyBlue "-------------------------Version Management-----------------------------"
+    echoContent yellow "15. Domain Name Blacklist"
+    echoContent skyBlue "-------------------------Version Management-----------------------------"
     echoContent yellow "16. Core Version ~ Logging ~ geosite/geoip"
     echoContent yellow "17. Update Script"
     echoContent yellow "18. Install BBR, DD script"
